@@ -57,3 +57,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # image uploader
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+
+# adding bootstrap
+# adding bootstrap
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'therubyracer'
+gem 'less-rails-bootstrap'
+gem 'font-awesome-rails'
+gem 'jquery-easing-rails'
