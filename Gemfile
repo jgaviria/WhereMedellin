@@ -66,3 +66,6 @@ gem 'therubyracer'
 gem 'less-rails-bootstrap'
 gem 'font-awesome-rails'
 gem 'jquery-easing-rails'
+
+# devise
+gem 'devise'

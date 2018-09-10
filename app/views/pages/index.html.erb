@@ -6,7 +6,9 @@
         <i class="fa fa-bars"></i>
       </button>
       <a class="navbar-brand page-scroll" href="#page-top">
-        <i class="fa fa-play-circle"></i>  <span class="light">Team</span> gripa
+        <% if user_signed_in? %>
+          <i class="fa fa-play-circle"></i>  <%= current_user.email %>
+        <% end %>
       </a>
     </div>
 
@@ -23,9 +25,13 @@
         <li>
           <a class="page-scroll" href="/events/new">Crear Evento</a>
         </li>
-        <li>
-          <a class="page-scroll" href="#contact">Contactenos</a>
-        </li>
+        <% if user_signed_in? %>
+          <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+          <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %> </li>
+        <% else %>
+          <li> <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %> </li>
+          <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> </li>
+        <% end %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -41,9 +47,6 @@
         <div class="col-md-8 col-md-offset-2">
           <h1 class="brand-heading">Where.Medellin</h1>
           <p class="intro-text">Plataforma de entretenimiento...</p>
-          <a href="#about" class="btn btn-circle page-scroll">
-            <i class="fa fa-angle-double-down animated"></i>
-          </a>
         </div>
       </div>
     </div>
@@ -68,18 +71,22 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <h2>Contact Start Bootstrap</h2>
-      <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+      <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and
+        themes, or to just say hello!</p>
       <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
       </p>
       <ul class="list-inline banner-social-buttons">
         <li>
-          <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+          <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i>
+            <span class="network-name">Twitter</span></a>
         </li>
         <li>
-          <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+          <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i>
+            <span class="network-name">Github</span></a>
         </li>
         <li>
-          <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+          <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i>
+            <span class="network-name">Google+</span></a>
         </li>
       </ul>
     </div>
@@ -89,6 +96,6 @@
 <!-- Footer -->
 <footer>
   <div class="container text-center">
-    <p>Copyright &copy; Your Website 2014</p>
+    <p>Copyright &copy; Your Website 2018</p>
   </div>
 </footer>
