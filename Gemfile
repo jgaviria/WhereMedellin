@@ -69,3 +69,9 @@ gem 'jquery-easing-rails'
 
 # devise
 gem 'devise'
+
+# access grante for role management
+gem 'access-granted'
+
+# form builder
+gem 'simple_form'
