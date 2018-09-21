@@ -16,10 +16,6 @@
  *= require_self
  */
 
-body {
-    margin: 0;
-    padding: 0;
-}
 h2 {
     color : #000000;
     text-align : center;
@@ -28,4 +24,16 @@ h2 {
 form {
     width: 300px;
     margin: 0 auto;
+}
+
+Html, body{
+    height:100%;
+}
+
+.grandParentContaniner{
+    display:table; height:100%; margin: 0 auto;
+}
+
+.parentContainer{
+    display:table-cell; vertical-align:middle;
 }
