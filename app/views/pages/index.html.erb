@@ -19,17 +19,49 @@
         <li class="hidden">
           <a href="#page-top"></a>
         </li>
-        <li>
-          <a class="page-scroll" href="/events">Eventos</a>
-        </li>
-        <li>
-          <% if user_signed_in? %>
-            <a class="page-scroll" href="/events/new">Crear Evento</a>
-          <% end %>
-        </li>
+
+        <% unless user_signed_in? %>
+          <li>
+            <a class="page-scroll" href="/events">Eventos</a>
+          </li>
+        <% end %>
+
+
         <% if user_signed_in? %>
-          <li> <%= link_to 'Editar Usuario', edit_user_registration_path, :class => 'navbar-link' %> </li>
-          <li><%= link_to "Crear Usuario", new_user_registration_path, :class => 'navbar-link' %> </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bares<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="page-scroll" href="/events/new">Crear Bar</a></li>
+              <li><a class="page-scroll" href="/events/edit">Editar Bar</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a class="page-scroll" href="/events">Lista De Bares</a></li>
+            </ul>
+          </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="page-scroll" href="/events/new">Crear Evento</a></li>
+                <li><a class="page-scroll" href="/events/edit">Editar Evento</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a class="page-scroll" href="/events">Lista De Eventos</a></li>
+              </ul>
+            </li>
+
+
+            <% if can? :create, User %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a <%= link_to 'Crear Usuario', new_user_registration_path, :class => 'navbar-link' %></a></li>
+                  <li><a <%= link_to 'Editar Usuario', edit_user_registration_path, :class => 'navbar-link' %></a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Lista De Usuarios</a></li>
+                </ul>
+              </li>
+            <% end %>
+
           <li> <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'navbar-link' %> </li>
         <% else %>
           <li> <%= link_to "Admin", new_user_session_path, :class => 'navbar-link' %> </li>
