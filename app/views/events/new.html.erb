@@ -1,7 +1,6 @@
 <div class="grandParentContaniner">
   <div class="parentContainer">
     <h2>Crear Evento</h2>
-    <form>
       <%= simple_form_for @event, html: {multipart: true} do |f| %>
         <% if @event.errors.any? %>
           <div id="error_explanation">
@@ -42,6 +41,5 @@
           </div>
         </div>
       <% end %>
-    </form>
   </div>
 </div>
