@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav">
         <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
         <li>
-          <a  href="/events/new">Crear Evento</a>
+          <a href="/events/new">Crear Evento</a>
         </li>
         <% if user_signed_in? %>
           <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
@@ -34,18 +34,27 @@
 </nav>
 
 
-
-  <div class="row">
-    <div class="row__inner">
-      <% @events.each do |event| %>
-        <div class="tile">
-          <div class="container-fluid">
-            <%= image_tag(event.image.url, class: "img-responsive center-block") if event.image.url.present? %>
-          </div>
-        </div>
-      <% end %>
+<div class="row__inner">
+  <% @events.each do |event| %>
+    <div class="tile">
+      <div class="container-fluid">
+        <%= image_tag(event.image.url, class: "img-responsive center-block") if event.image.url.present? %>
+      </div>
     </div>
-  </div>
+  <% end %>
+</div>
 
 
 </div>
+
+<script>
+    $(window).on('resize', function () {
+        if ($(window).width() < 600) {
+            $('.tile').addClass('cell_view');
+            $('.cell_view').removeClass('tile');
+        } else {
+            $('.cell_view').addClass('tile');
+            $('.tile').removeClass('cell_view');
+        }
+    })
+</script>
