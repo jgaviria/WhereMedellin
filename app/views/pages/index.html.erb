@@ -1,135 +1,119 @@
-<!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-        <i class="fa fa-bars"></i>
-      </button>
-      <a class="navbar-brand page-scroll" href="#page-top">
-        <% if user_signed_in? %>
-          <i class="fa fa-play-circle"></i>  <%= current_user.email %>
-        <% end %>
-      </a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav">
-        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-        <li class="hidden">
-          <a href="#page-top"></a>
-        </li>
-
-        <% unless user_signed_in? %>
-          <li>
-            <a class="page-scroll" href="/events">Eventos</a>
-          </li>
-        <% end %>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="animation-enabled animated-content colorize js no-flexbox flexbox-legacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths wf-brandongrotesque-n4-active wf-brandongrotesque-n7-active wf-brandongrotesque-n3-active wf-brandongrotesque-n5-active wf-futurapt-n7-active wf-futurapt-i7-active wf-futurapt-n4-active wf-futurapt-i4-active wf-active"><head>
 
 
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bares<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="page-scroll" href="/bars/new">Crear Bar</a></li>
-              <li><a class="page-scroll" href="/bars/edit">Editar Bar</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a class="page-scroll" href="/bars">Lista De Bares</a></li>
-            </ul>
-          </li>
+  <link rel="stylesheet" id="main-styles-css" href="http://www.alessioatzeni.com/wp-content/themes/az/style.css" type="text/css" media="all">
+  <script type="text/javascript" src="http://www.alessioatzeni.com/wp-includes/js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="http://www.alessioatzeni.com/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="http://www.alessioatzeni.com/wp-content/plugins/dynamic-cookie-blocker/js/front.js"></script>
+  <link rel="alternate" type="application/json+oembed" href="http://www.alessioatzeni.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.alessioatzeni.com%2F">
+  <link rel="alternate" type="text/xml+oembed" href="http://www.alessioatzeni.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.alessioatzeni.com%2F&amp;format=xml">
 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a class="page-scroll" href="/events/new">Crear Evento</a></li>
-                <li><a class="page-scroll" href="/events/edit">Editar Evento</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a class="page-scroll" href="/events">Lista De Eventos</a></li>
-              </ul>
+<!--  sets lenght of div based on on how many pictures are uploaded-->
+  <script>
+      function upds_log(m1, m2, m3, m4, m5) {
+          if(console && console.log)
+              console.log('DCB: ' + m1, m2 || '', m3 || '', m4 || '', m5 || '');
+      }
+
+      function upds_getCookie(cname)
+      {
+          var name = cname + '=';
+          var ca = document.cookie.split(';');
+          for(var i=0; i<ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1);
+              if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+          }
+          return '';
+      }
+  </script>
+
+  <style>
+    span.upds_cookie_policy
+    {
+      width:0px; height: 0px;  margin: 0 !important; padding: 0 !important;
+    }
+
+    .upds-no-cookie-placeholder
+    {
+      background-color: #eee;
+      border: 1px solid #aaa;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Loading -->
+<div id="loader-container" style="opacity: 0; display: none;">
+	<span id="loader-percentage-line" style="height: 100%;">
+		<span id="loader-percentage">100</span>
+	</span>
+</div>
+<!-- End Loading -->
+
+<!-- Start Wrap All -->
+<div class="wrap_all" style="opacity: 1; visibility: visible;">
+
+  <!-- Header -->
+  <header id="menu">
+    <a id="mobile-nav" class="menu-nav dJAX_internal desktop-view" href="#menu-pr"><span class="fa fa-bars"></span></a>
+    <nav id="menu-pr" class="desktop-view">
+      <ul>
+        <li><a title="About" href="/users/signup" class="dJAX_internal">About<i class="fa fa-beer" data-id="123"></i></a></li>
+        <li><a title="About" href="/users/signup" class="dJAX_internal">About<i class="fa fa-user" data-id="123"></i></a></li>
+        <li><a title="About" href="/users/signup" class="dJAX_internal">About<i class="fa fa-user" data-id="123"></i></a></li>
+        <li><a data-toggle="modal" href="#" data-target="#myModal" title="Contact" class="dJAX_internal">Contact <i class="contact"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- End Header -->
+
+  <!-- Loader -->
+  <div class="page-bg" style="display: none;"></div>
+  <div class="page-loader" style="display: none;"></div>
+  <!-- End Loader -->
+
+<!--  Event.first.image.file.file-->
+
+<!--  <td><%#= image_tag(event.image.url, class: "img-responsive center-block") if event.image.url.present? %></td>-->
+
+  <!-- Start Main -->
+  <div id="main" class="ajaxable" style="display: block;">
+    <div id="content-portfolio">
+      <section id="works">
+        <ul id="projects" style="width: 5973px;">
+          <% Event.all.each do |event| %>
+            <li class="item-projects flip-container animate-helix-off" style="height: 872px;">
+              <div class="flipper">
+                <div class="front" style="background-image: url(<%= event.image.url %>);"></div>
+                <div class="back">
+                  <a href="http://www.alessioatzeni.com/portfolio/ibuki/" title="Ibuki" class="dJAX_internal">
+                    <div class="conte-title">
+                      <h3 class="title-pro">Team</h3>
+                      <h4 class="capt">Gripa</h4>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </li>
-
-
-            <% if can? :create, User %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a <%= link_to 'Crear Usuario', new_user_registration_path, :class => 'navbar-link' %></a></li>
-                  <li><a <%= link_to 'Editar Usuario', edit_user_registration_path, :class => 'navbar-link' %></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="/users">Lista De Usuarios</a></li>
-                </ul>
-              </li>
-            <% end %>
-
-          <li> <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'navbar-link' %> </li>
-        <% else %>
-          <li> <%= link_to "Admin", new_user_session_path, :class => 'navbar-link' %> </li>
-        <% end %>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
-<!-- Intro Header -->
-<header class="intro">
-  <div class="intro-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h3 class="brand-heading">Where.Medellin</h3>
-          <p class="intro-text">Plataforma de entretenimiento...</p>
-        </div>
-      </div>
+          <% end %>
+        </ul>
+      </section>
     </div>
   </div>
-</header>
+  <!-- End Main -->
 
-<!-- Download Section -->
-<section id="download" class="content-section text-center">
-  <div class="download-section">
-    <div class="container">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h2>Publica con nosotros?</h2>
-        <p>Somos una chimba papi!!!!!</p>
-        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Forma</a>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
+<!-- End Wrap All -->
 
-<!-- Contact Section -->
-<section id="contact" class="container content-section text-center">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2>Contact Start Bootstrap</h2>
-      <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and
-        themes, or to just say hello!</p>
-      <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-      </p>
-      <ul class="list-inline banner-social-buttons">
-        <li>
-          <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i>
-            <span class="network-name">Twitter</span></a>
-        </li>
-        <li>
-          <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i>
-            <span class="network-name">Github</span></a>
-        </li>
-        <li>
-          <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i>
-            <span class="network-name">Google+</span></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="container text-center">
-    <p>Copyright &copy; Your Website 2018</p>
-  </div>
-</footer>
+<script type="text/javascript" src="http://www.alessioatzeni.com/wp-content/themes/az/_include/js/plugins.js"></script>
+<script type="text/javascript" src="http://www.alessioatzeni.com/wp-content/themes/az/_include/js/main-not-compiled.js"></script>
+<script type="text/javascript" src="http://www.alessioatzeni.com/wp-includes/js/wp-embed.min.js"></script>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var cnArgs = {"ajaxurl":"http:\/\/www.alessioatzeni.com\/wp-admin\/admin-ajax.php","hideEffect":"fade","upds_accept_on_scroll":"no","upds_accept_on_page_click":"yes","upds_accept_force_refresh":"yes","cookieName":"cookie_notice_accepted","cookieValue":"TRUE","cookieTime":"31536000","cookiePath":"\/","cookieDomain":""};
+    /* ]]> */
+</script>
